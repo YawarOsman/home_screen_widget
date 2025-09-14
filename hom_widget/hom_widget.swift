@@ -29,13 +29,13 @@ struct Provider: TimelineProvider {
                 let ethPrice = prices.first(where: { $0.instId == "ETH-USDT" })?.last ?? "N/A"
 
                 let entry = SimpleEntry(date: Date(), btcPrice: btcPrice, ethPrice: ethPrice)
-                let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(60)))
+                let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(900)))
                 completion(timeline)
             } else {
                 
                 print("Failed to fetch prices (nil returned)")
                 let fallbackEntry = SimpleEntry(date: Date(), btcPrice: "N/A", ethPrice: "N/A")
-                let timeline = Timeline(entries: [fallbackEntry], policy: .after(Date().addingTimeInterval(60)))
+                let timeline = Timeline(entries: [fallbackEntry], policy: .after(Date().addingTimeInterval(900)))
                 completion(timeline)
             }
         }
